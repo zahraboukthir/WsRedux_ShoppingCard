@@ -43,8 +43,6 @@ export const rmvquantity = (id) => {
     payload: id,
   };
 };
-export const details=(id)=>{
-
-    return {type:DETAILS,
-    payload:id}
-}
+export const details = (id) => {
+  return { type: DETAILS, payload: id };
+};

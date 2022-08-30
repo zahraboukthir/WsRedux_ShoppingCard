@@ -1,20 +1,22 @@
+import { useDispatch } from "react-redux";
+import {
+  addquantity,
+  addtotal,
+  rmvprod,
+  rmvquantity,
+  rmvtotal,
+} from "../rdx/cardActions";
 
-import { useDispatch } from 'react-redux';
-import { addquantity, addtotal, rmvprod, rmvquantity , rmvtotal} from "../rdx/cardActions";
-
-
-
-const TrCard = ({ el}) => {
-  const dispatch=useDispatch()
+const TrCard = ({ el }) => {
+  const dispatch = useDispatch();
 
   function addPrice() {
-    
-    dispatch(addtotal(el.price))
-   dispatch(addquantity(el.id))
-  }function moinPrice() {
-    dispatch(rmvtotal(el.price))
-    dispatch(rmvquantity(el.id))
-
+    dispatch(addtotal(el.price));
+    dispatch(addquantity(el.id));
+  }
+  function moinPrice() {
+    dispatch(rmvtotal(el.price));
+    dispatch(rmvquantity(el.id));
   }
   return (
     <tr>
@@ -25,7 +27,7 @@ const TrCard = ({ el}) => {
       <td>
         <button
           onClick={() =>
-            el.qteA< el.qte
+            el.qteA < el.qte
               ? addPrice()
               : alert(`you reach the maximum quantity : ${el.qte}`)
           }
@@ -33,16 +35,12 @@ const TrCard = ({ el}) => {
           +
         </button>{" "}
         <p>{el.qteA}</p>
-        <button
-          onClick={() => el.qteA>1? moinPrice():null }
-        >
-          -
-        </button>
+        <button onClick={() => (el.qteA > 1 ? moinPrice() : null)}>-</button>
       </td>
       <td>{el.price}</td>
       <td>{el.prt}</td>
       <td>
-        <button onClick={()=>dispatch(rmvprod(el.id,el.prt))}>X</button>
+        <button onClick={() => dispatch(rmvprod(el.id, el.prt))}>X</button>
       </td>
     </tr>
   );

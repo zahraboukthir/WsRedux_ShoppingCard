@@ -47,7 +47,7 @@ const initState = {
   ],
   panier: [],
   total: 0,
-  proddetails:{}
+  proddetails: {},
 };
 const cardReducer = (state = initState, action) => {
   switch (action.type) {
@@ -100,8 +100,11 @@ const cardReducer = (state = initState, action) => {
         ...state,
         total: state.total - action.payload,
       };
-      case DETAILS:
-        return{...state,proddetails:state.listProd.find(el=>el.id==action.payload)}
+    case DETAILS:
+      return {
+        ...state,
+        proddetails: state.listProd.find((el) => el.id === action.payload),
+      };
     default:
       return state;
   }
