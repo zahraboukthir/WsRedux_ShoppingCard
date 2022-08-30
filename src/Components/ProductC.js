@@ -9,6 +9,7 @@ import { addtocard } from './../rdx/cardActions';
 function ProductC({ el: { id, title, price, img, qte }}) {
   const [like, setLike] = useState(false);
 const dispatch=useDispatch()
+
   return (
     <div>
       <Card style={{ width: "18rem" }}>

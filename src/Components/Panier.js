@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import TrCard from './TrCard';
 
 import {useSelector} from 'react-redux'
-function Panier({dl,pantotal}) {
+function Panier() {
   
   const pnr=useSelector((state)=>state.panier)
   const totalp=useSelector((state)=>state.total)
@@ -22,7 +22,7 @@ function Panier({dl,pantotal}) {
       </thead>
       <tbody>
         {pnr&&pnr.map(
-          (el,i)=><TrCard tl={pantotal} el={el} key={i} dl={dl}/>
+          (el,i)=><TrCard  el={el} key={i} />
         )}
       
         <tr>

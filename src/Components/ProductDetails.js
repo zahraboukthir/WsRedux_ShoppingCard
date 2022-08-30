@@ -1,19 +1,24 @@
-import React from 'react'
-import {useParams}from 'react-router-dom'
-const ProductDetails = ({list}) => {
-  const {idprod} =useParams()
-  const pd=list.find(
-    (el)=>el.id==idprod
-  )
-  console.log(pd)
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { details } from "./../rdx/cardActions";
+const ProductDetails = () => {
+  const dispatch = useDispatch();
+  const { idprod } = useParams();
+  useEffect(() => {
+    dispatch(details(idprod));
+  }, []);
+
+  const pd = useSelector((state) => state.proddetails);
+
   return (
-    <div className='container'>
+    <div className="container">
       {pd.title}
-      <img src={pd.img} alt=""/>
+      <img src={pd.img} alt="" />
       {pd.price}
       {pd.qte}
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;
