@@ -11,8 +11,9 @@ const TrCard = ({ el }) => {
   const dispatch = useDispatch();
 
   function addPrice() {
-    dispatch(addtotal(el.price));
     dispatch(addquantity(el.id));
+    dispatch(addtotal(el.price));
+    
   }
   function moinPrice() {
     dispatch(rmvtotal(el.price));

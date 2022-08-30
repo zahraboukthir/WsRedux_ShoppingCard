@@ -6,9 +6,11 @@ import {
   REMOVETOTAL,
   REMOVEQUANTITY,
   DETAILS,
+  LIKE,
 } from "./actionTypes";
 export const addtocard = (newprd) => {
   return {
+
     type: ADDTOCARD,
     payload: newprd,
   };
@@ -46,3 +48,7 @@ export const rmvquantity = (id) => {
 export const details = (id) => {
   return { type: DETAILS, payload: id };
 };
+
+export const likeprod=(id)=>{
+  return{type:LIKE ,payload:id}
+}

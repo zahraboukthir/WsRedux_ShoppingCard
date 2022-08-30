@@ -3,6 +3,7 @@ import {
   ADDTOCARD,
   ADDTOTAL,
   DETAILS,
+  LIKE,
   REMOVEQUANTITY,
   REMOVETOTAL,
   RMVPROD,
@@ -15,39 +16,41 @@ const initState = {
       price: 50,
       img: "https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/9295/1.jpg?9434",
       qte: 5,
+      like:false
     },
     {
       id: 2,
       title: "t-shirt XL",
       price: 60,
       img: "https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/9295/1.jpg?9434",
-      qte: 5,
+      qte: 5,like:false
     },
     {
       id: 3,
       title: "t-shirt S",
       price: 120,
       img: "https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/9295/1.jpg?9434",
-      qte: 5,
+      qte: 5,like:false
     },
     {
       id: 4,
       title: "t-shirt hkejhil",
       price: 124,
       img: "https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/9295/1.jpg?9434",
-      qte: 5,
+      qte: 5,like:false
     },
     {
       id: 5,
       title: "t-shirt",
       price: 12,
       img: "https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/9295/1.jpg?9434",
-      qte: 5,
+      qte: 5,like:false
     },
   ],
   panier: [],
   total: 0,
   proddetails: {},
+
 };
 const cardReducer = (state = initState, action) => {
   switch (action.type) {
@@ -66,7 +69,7 @@ const cardReducer = (state = initState, action) => {
         total: state.total + action.payload.price,
       };
     case RMVPROD:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         panier: state.panier.filter((el) => el.id !== action.payload.id),
@@ -103,8 +106,17 @@ const cardReducer = (state = initState, action) => {
     case DETAILS:
       return {
         ...state,
-        proddetails: state.listProd.find((el) => el.id === action.payload),
+        proddetails: state.listProd.find((el) => el.id === Number(action.payload)),
       };
+      case LIKE:
+        return{
+          ...state,
+          listProd: state.listProd.map((el) =>
+            el.id === action.payload
+              ? { ...el,like:!el.like }
+              : el
+          ),
+        };
     default:
       return state;
   }
