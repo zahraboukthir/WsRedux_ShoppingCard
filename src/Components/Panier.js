@@ -7,7 +7,7 @@ function Panier() {
   const pnr = useSelector((state) => state.panier);
   const totalp = useSelector((state) => state.total);
   return (
-    <div>
+    <div style={{marginTop: "5rem" }}>
       <Table striped bordered hover>
         <thead>
           <tr>

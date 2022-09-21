@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { details,addtocard, likeprod } from "./../rdx/cardActions";
 import { AiFillHeart } from "react-icons/ai";
-const ProductDetails = () => {
+const C = () => {
   const dispatch = useDispatch();
   const { idprod } = useParams();
   useEffect(() => {
@@ -12,7 +12,6 @@ const ProductDetails = () => {
   }, [dispatch,idprod]);
 
   const pd = useSelector((state) => state.proddetails);
-
   return (
     <main className="containerc">
       {/* Left Column / Headphones Image */}
@@ -53,4 +52,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default C;
